@@ -1,0 +1,50 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const TOKEN_KEY = '@warungai_token';
+const USER_KEY = '@warungai_user';
+
+export const storage = {
+  async saveToken(token) {
+    try {
+      await AsyncStorage.setItem(TOKEN_KEY, token);
+    } catch (e) {
+      console.error('Error saving token', e);
+    }
+  },
+
+  async getToken() {
+    try {
+      return await AsyncStorage.getItem(TOKEN_KEY);
+    } catch (e) {
+      console.error('Error getting token', e);
+      return null;
+    }
+  },
+
+  async saveUser(user) {
+    try {
+      await AsyncStorage.setItem(USER_KEY, JSON.stringify(user));
+    } catch (e) {
+      console.error('Error saving user', e);
+    }
+  },
+
+  async getUser() {
+    try {
+      const data = await AsyncStorage.getItem(USER_KEY);
+      return data ? JSON.parse(data) : null;
+    } catch (e) {
+      console.error('Error getting user', e);
+      return null;
+    }
+  },
+
+  async clearAuth() {
+    try {
+      await AsyncStorage.multiRemove([TOKEN_KEY, USER_KEY]);
+    } catch (e) {
+      console.error('Error clearing auth storage', e);
+    }
+  }
+};
+

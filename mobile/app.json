@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "WarungAI",
+    "slug": "warungai-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#16a34a"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#16a34a"
+      },
+      "permissions": [
+        "RECORD_AUDIO"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-av",
+        {
+          "microphonePermission": "WarungAI membutuhkan akses mikrofon untuk mencatat transaksi dengan suara."
+        }
+      ]
+    ]
+  }
+}
+
